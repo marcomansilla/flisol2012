@@ -26,7 +26,19 @@ def register():
     form=auth.register(next='index',
                        onaccept=update_person)
     return dict(form=form)
-                
+
+def registrar():
+    form = SQLFORM(db.asistente, next='index')
+
+    if form.process().accepted:
+        response.flash='Se ha registrado exitosamente'
+    elif form.errors:
+        response.flash='El formulario tiene errores'
+    else:
+        response.flash='Por favor complete el formulario'
+    
+    return dict(form=form)
+
 def password():
     return dict(form=auth.retrieve_password(next='login'))
 

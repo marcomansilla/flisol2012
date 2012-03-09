@@ -368,3 +368,20 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
+timestamp: 2012-03-09T15:06:24.349020
+CREATE TABLE asistente(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre CHAR(30),
+    apellido CHAR(30),
+    dni INTEGER,
+    email CHAR(40),
+    ocupacion CHAR(512),
+    provincia CHAR(512),
+    certificado CHAR(1),
+    instalacion CHAR(1),
+    dispositivo CHAR(512),
+    distribucion CHAR(512),
+    comentario TEXT,
+    fecha TIMESTAMP
+);
+success!

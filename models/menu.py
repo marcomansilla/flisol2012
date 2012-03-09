@@ -5,7 +5,7 @@ session.manager=(auth.user and auth.user.email in MANAGERS)
 response.menu=[[T('Main'),False,URL(r=request,c='default',f='index')]]
 
 if not auth.user:
-    response.menu.append([T('Register'),False,URL(r=request,c='default',f='register')])
+    response.menu.append([T('Register'),False,URL(r=request,c='default',f='registrar')])
 
 if CONFERENCE_URL:
     response.menu.append([T('Conference'),False,CONFERENCE_URL])
