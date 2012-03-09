@@ -1,0 +1,38 @@
+(dp1
+S'from_person'
+p2
+S'REFERENCES auth_user(id) ON DELETE CASCADE'
+p3
+sS'description'
+p4
+S'TEXT'
+p5
+sS'created_on'
+p6
+S'TIMESTAMP'
+p7
+sS'created_by'
+p8
+S'REFERENCES auth_user(id) ON DELETE CASCADE'
+p9
+sS'id'
+p10
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p11
+sS'amount'
+p12
+S'DOUBLE'
+p13
+sS'modified_on'
+p14
+S'TIMESTAMP'
+p15
+sS'to_person'
+p16
+S'REFERENCES auth_user(id) ON DELETE CASCADE'
+p17
+sS'approved'
+p18
+S'CHAR(1)'
+p19
+s.

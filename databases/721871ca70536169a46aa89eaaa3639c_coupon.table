@@ -1,0 +1,26 @@
+(dp1
+S'comment'
+p2
+S'TEXT'
+p3
+sS'name'
+p4
+S'CHAR(64) UNIQUE'
+p5
+sS'discount'
+p6
+S'DOUBLE'
+p7
+sS'auto_match_registration'
+p8
+S'CHAR(1)'
+p9
+sS'person'
+p10
+S'INTEGER'
+p11
+sS'id'
+p12
+S'INTEGER PRIMARY KEY AUTOINCREMENT'
+p13
+s.

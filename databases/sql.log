@@ -1,0 +1,370 @@
+timestamp: 2009-12-15T22:01:17.836000
+CREATE TABLE auth_user(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	first_name CHAR(128),
+	last_name CHAR(128),
+	email CHAR(128),
+	password CHAR(512),
+	address1 CHAR(128),
+	address2 CHAR(128),
+	city CHAR(512),
+	state CHAR(512),
+	country CHAR(512),
+	zip_code CHAR(512),
+	phone_number CHAR(512),
+	badge_line1 CHAR(512),
+	badge_line2 CHAR(512),
+	personal_home_page CHAR(128),
+	company_name CHAR(512),
+	company_home_page CHAR(128),
+	hotel CHAR(512),
+	include_in_delegate_listing CHAR(1),
+	food_preference CHAR(512),
+	t_shirt_size CHAR(512),
+	sprints CHAR(512),
+	attendee_type CHAR(512),
+	donation_to_PSF DOUBLE,
+	tutorials TEXT,
+	discount_coupon CHAR(64),
+	amount_billed DOUBLE,
+	amount_added DOUBLE,
+	amount_subtracted DOUBLE,
+	amount_paid DOUBLE,
+	amount_due DOUBLE,
+	speaker CHAR(1),
+	session_chair CHAR(1),
+	manager CHAR(1),
+	reviewer CHAR(1),
+	latitude DOUBLE,
+	longitude DOUBLE,
+	checkout_status CHAR(512),
+	pay_token CHAR(512),
+	registration_key CHAR(64),
+	created_by_ip CHAR(512),
+	created_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:17.992000
+CREATE TABLE auth_group(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	role CHAR(512),
+	description TEXT
+);
+success!
+timestamp: 2009-12-15T22:01:18.227000
+CREATE TABLE auth_membership(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	user_id REFERENCES auth_user(id) ON DELETE CASCADE,
+	group_id REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2009-12-15T22:01:18.414000
+CREATE TABLE auth_permission(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	group_id REFERENCES auth_group(id) ON DELETE CASCADE,
+	name CHAR(512),
+	table_name CHAR(512),
+	record_id INTEGER
+);
+success!
+timestamp: 2009-12-15T22:01:18.617000
+CREATE TABLE auth_event(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	time_stamp TIMESTAMP,
+	client_ip CHAR(512),
+	user_id REFERENCES auth_user(id) ON DELETE CASCADE,
+	origin CHAR(512),
+	description TEXT
+);
+success!
+timestamp: 2009-12-15T22:01:18.836000
+CREATE TABLE payment(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	from_person REFERENCES auth_user(id) ON DELETE CASCADE,
+	method CHAR(512),
+	amount DOUBLE,
+	order_id CHAR(64),
+	status CHAR(64),
+	invoice TEXT,
+	created_on TIMESTAMP,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:19.039000
+CREATE TABLE money_transfer(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	from_person REFERENCES auth_user(id) ON DELETE CASCADE,
+	to_person REFERENCES auth_user(id) ON DELETE CASCADE,
+	description TEXT,
+	amount DOUBLE,
+	approved CHAR(1),
+	created_on TIMESTAMP,
+	modified_on TIMESTAMP,
+	created_by REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2009-12-15T22:01:19.227000
+CREATE TABLE coupon(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name CHAR(64) UNIQUE,
+	person INTEGER,
+	comment TEXT,
+	discount DOUBLE,
+	auto_match_registration CHAR(1)
+);
+success!
+timestamp: 2009-12-15T22:01:19.367000
+CREATE TABLE talk(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	authors CHAR(512),
+	title CHAR(512),
+	duration INTEGER,
+	cc CHAR(512),
+	abstract TEXT,
+	description TEXT,
+	categories TEXT,
+	scheduled_datetime TIMESTAMP,
+	status CHAR(512),
+	score DOUBLE,
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	created_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:19.539000
+CREATE TABLE talk_archived(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	authors CHAR(512),
+	title CHAR(512),
+	duration INTEGER,
+	cc CHAR(512),
+	abstract TEXT,
+	description TEXT,
+	categories TEXT,
+	scheduled_datetime TIMESTAMP,
+	status CHAR(512),
+	score DOUBLE,
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	created_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP,
+	parent_talk REFERENCES talk(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2009-12-15T22:01:19.695000
+CREATE TABLE fa(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	person REFERENCES auth_user(id) ON DELETE CASCADE,
+	created_on TIMESTAMP,
+	modified_on TIMESTAMP,
+	registration_amount DOUBLE,
+	hotel_nights INTEGER,
+	total_lodging_amount DOUBLE,
+	roommates CHAR(128),
+	transportation_details TEXT,
+	transportation_amount DOUBLE,
+	total_amount_requested DOUBLE,
+	minimum_amount_requested DOUBLE,
+	rationale TEXT
+);
+success!
+timestamp: 2009-12-15T22:01:19.883000
+CREATE TABLE t2_person(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name CHAR(512),
+	email CHAR(512),
+	registration_key CHAR(64),
+	password CHAR(512),
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:20.164000
+CREATE TABLE t2_group(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name CHAR(512),
+	description TEXT,
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:20.352000
+CREATE TABLE t2_membership(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	person_id REFERENCES t2_person(id) ON DELETE CASCADE,
+	group_id REFERENCES t2_group(id) ON DELETE CASCADE,
+	membership_type CHAR(512),
+	status CHAR(512),
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:20.570000
+CREATE TABLE t2_access(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	group_id REFERENCES t2_group(id) ON DELETE CASCADE,
+	table_name CHAR(512),
+	record_id INTEGER,
+	access_type CHAR(512),
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:20.774000
+CREATE TABLE t2_attachment(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	table_name CHAR(512),
+	record_id INTEGER,
+	name CHAR(512),
+	description TEXT,
+	file CHAR(512),
+	file_data BLOB,
+	filename CHAR(512),
+	status CHAR(512),
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:20.992000
+CREATE TABLE t2_comment(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	table_name CHAR(512),
+	record_id INTEGER,
+	parent_record INTEGER,
+	body TEXT,
+	status CHAR(512),
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:21.195000
+CREATE TABLE t2_review(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	table_name CHAR(512),
+	record_id INTEGER,
+	rating INTEGER,
+	body TEXT,
+	status CHAR(512),
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:21.336000
+CREATE TABLE t2_wiki(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name CHAR(512),
+	title CHAR(512),
+	menu CHAR(1),
+	public CHAR(1),
+	body TEXT,
+	created_signature CHAR(512),
+	created_by_ip CHAR(512),
+	created_by INTEGER,
+	created_on TIMESTAMP,
+	modified_signature CHAR(512),
+	modified_by INTEGER,
+	modified_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:21.477000
+CREATE TABLE expense_form(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	person REFERENCES auth_user(id) ON DELETE CASCADE,
+	event CHAR(20),
+	created_on TIMESTAMP
+);
+success!
+timestamp: 2009-12-15T22:01:21.602000
+CREATE TABLE expense_item(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	exp_form REFERENCES expense_form(id) ON DELETE CASCADE,
+	seq INTEGER,
+	receipt_no INTEGER,
+	receipt_item INTEGER,
+	acct_code CHAR(20),
+	description TEXT,
+	serial_no CHAR(30),
+	location TEXT,
+	amount DOUBLE
+);
+success!
+timestamp: 2010-04-05T01:33:32.331266
+ALTER TABLE auth_user ADD installfest_os CHAR(512);
+timestamp: 2010-04-05T01:33:32.337949
+ALTER TABLE auth_user ADD installfest_hardware TEXT;
+timestamp: 2010-04-05T01:37:08.678387
+ALTER TABLE auth_user ADD donation DOUBLE;
+timestamp: 2010-04-05T11:28:13.679743
+ALTER TABLE auth_user ADD address CHAR(255);
+timestamp: 2010-04-05T17:01:48.705383
+CREATE TABLE plugin_flatpage(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    controller CHAR(512),
+    function CHAR(512),
+    arg CHAR(512),
+    title CHAR(512),
+    subtitle CHAR(512),
+    view CHAR(512),
+    format CHAR(512),
+    lang CHAR(2),
+    body TEXT,
+    created_on TIMESTAMP,
+    created_by REFERENCES auth_user(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-04-05T23:23:00.010374
+ALTER TABLE auth_user ADD accept_conditions CHAR(1);
+timestamp: 2010-04-07T00:45:50.278668
+ALTER TABLE talk ADD level TEXT;
+timestamp: 2010-04-07T00:45:50.294582
+ALTER TABLE talk_archived ADD level TEXT;
+timestamp: 2010-04-07T01:53:37.028847
+ALTER TABLE auth_user ADD resume TEXT;
+timestamp: 2012-03-09T00:54:56.315757
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
