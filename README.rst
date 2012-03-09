@@ -18,4 +18,6 @@ Actualmente corriendo sobre web2py 1.99.7, descarga en http://www.web2py.com
 
     - Clonar repositorio en la carpeta web2py/applications
 
+        git clone https://github.com/316/flisol2012.git
+
 para dudas, consultas o sugerencias email marco@saltalug.org.ar
