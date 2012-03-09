@@ -6,10 +6,10 @@ Basado en el branch de Marino Reingart, adaptado para el flisol Salta 2012
 Modificaciones
 ==============
 
-*Cambios en el template CSS
-*Gestion de registro de usuarios
-*Gestion de informacion de equipos para el install fest
-*Autenticacion de entrada y salida de hardware al evento
+    *Cambios en el template CSS
+    *Gestion de registro de usuarios
+    *Gestion de informacion de equipos para el install fest
+    *Autenticacion de entrada y salida de hardware al evento
 
 Instrucciones
 =============
