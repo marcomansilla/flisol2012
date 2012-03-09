@@ -1,4 +1,45 @@
-
 {{extend 'layout.html'}}
-<h1>This is the default/registrar.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+
+<script>
+$(document).ready(function(){
+$('TR TD:first').attr('width','150px');
+});
+</script>
+
+<div class="frame">
+<h2>{{=T('Registration Form')}}</h2>
+{{=form}}
+
+<script>
+jQuery(document).ready(function(){
+    jQuery('#asistente_dispositivo__row').hide();
+    jQuery('#asistente_distribucion__row').hide();
+    jQuery('#asistente_comentario__row').hide();
+    jQuery('#asistente_instalacion').change(function(){
+    if(jQuery('#asistente_instalacion').attr('checked'))
+        jQuery('#asistente_dispositivo__row').show();
+        jQuery('#asistente_distribucion__row').show();
+        jQuery('#asistente_comentario__row').show();
+        else 
+             jQuery('#asistente_dispositivo__row').hide();
+             jQuery('#asistente_distribucion__row').hide();
+             jQuery('#asistente_comentario__row').hide();});
+});
+</script>
+<p><b>Notas:</b></p>
+<p id="footnote1"><b>[1]</b>Es deber del concurrente hacer, previa a la instalación, una copia de respaldo de los datos almacenados en la computadora por tratarse de procedimientos de alto riesgo para la integridad de los mismos. Los organizadores, colaboradores o personal de la institución, no se hacen responsables por:
+<ul>
+<li>La pérdida de los datos que pudieran ocasionarse</li>
+<li>Daños en el hardware</li>
+<li>Daños ocasionados por problemas de tensión</li>
+<li>Robo o hurto que pueda surgir en las instalaciones</li>
+<li>Caso fortuito</li>
+</ul>
+<p id="footnote2"><b>[2]</b>La información proporcionada será adjuntada al libro de actas (para asistencia), podrá ser impresa en una credencial y puede ser provista a los organizadores y auspiciantes. Los campos son opcionales salvo que se aclare lo contrario.</p>
+
+<p>Las condiciones del presente convenio de participación del Festival de Instalación de Software Libre, no pueden ser alteradas sin el concentimiento de los organizadores.</p>
+
+<p>El propietario del equipo, al asistir a este evento, acepta haber leído y declara estar de acuerdo con todas y cada una de las condiciones y consideraciones planteadas anteriormente y exime de responsabilidad a los organizadores y colaboradores de cualquier perdida de datos o daños efectuados al hardware.
+
+</p>
+</div>

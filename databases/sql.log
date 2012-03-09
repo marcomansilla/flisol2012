@@ -385,3 +385,5 @@ CREATE TABLE asistente(
     fecha TIMESTAMP
 );
 success!
+timestamp: 2012-03-09T16:11:38.675233
+ALTER TABLE asistente ADD institucion CHAR(512);

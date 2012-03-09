@@ -28,7 +28,7 @@ def register():
     return dict(form=form)
 
 def registrar():
-    form = SQLFORM(db.asistente, next='index')
+    form = SQLFORM(db.asistente)
 
     if form.process().accepted:
         response.flash='Se ha registrado exitosamente'
