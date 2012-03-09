@@ -15,23 +15,23 @@ else:
         [T('Venue'),True,URL(r=request,c='conference',f='venue')],
         [T('Software'),True,URL(r=request,c='conference',f='software')],
         [T('Schedule'),True,URL(r=request,c='conference',f='schedule')],
-        [T('Communities'),True,URL(r=request,c='conference',f='communities')],
+        #[T('Communities'),True,URL(r=request,c='conference',f='communities')],
         [T('Talk Proposals'),True,URL(r=request,c='conference',f='proposals')],
         [T('Staff'),True,URL(r=request,c='conference',f='staff')],
     ]
     response.menu.append([T('Conference'),False,'#',submenu_conf])
 
-submenu_info=[
-        [T('Companies'),False,URL(r=request,c='default',f='companies')],
-        [T('Attendees'),False,URL(r=request,c='default',f='attendees')],
-        [T('Charts'),False,URL(r=request,c='default',f='charts')],
-        [T('Maps'),False,URL(r=request,c='default',f='maps')],
-]
-if ENABLE_TALKS:
-   submenu_info.append([T('Accepted Talks'),False,URL(r=request,c='default',f='accepted_talks')])
-   submenu_info.append([T('Proposed Talks'),False,URL(r=request,c='default',f='proposed_talks')])
+#submenu_info=[
+#        [T('Companies'),False,URL(r=request,c='default',f='companies')],
+#        [T('Attendees'),False,URL(r=request,c='default',f='attendees')],
+#        [T('Charts'),False,URL(r=request,c='default',f='charts')],
+#        [T('Maps'),False,URL(r=request,c='default',f='maps')],
+#]
+#if ENABLE_TALKS:
+#   submenu_info.append([T('Accepted Talks'),False,URL(r=request,c='default',f='accepted_talks')])
+#   submenu_info.append([T('Proposed Talks'),False,URL(r=request,c='default',f='proposed_talks')])
 
-response.menu.append([T('Stats'),False,'#',submenu_info])
+#response.menu.append([T('Stats'),False,'#',submenu_info])
 response.menu.append([T('About'),False,URL(r=request,c='default',f='about')])
 
 if auth.user:
