@@ -47,7 +47,7 @@ else:
 
 if auth.user and session.manager:
     submenu=[
-        [T('Financials'),False,URL(r=request,c='default',f='financials')],
+        [T('Asistentes'),False,URL(r=request,c='default',f='asistentes')],
         [T('Payments'),False,URL(r=request,c='default',f='payments')],
         # [T('CSV for Badges'),False,URL(r=request,c='default',f='badges')],
         [T('Attendee Mail-List'),False, URL(r=request,c='default',f='maillist')],

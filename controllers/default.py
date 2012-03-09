@@ -292,13 +292,18 @@ def maillist():
     return str(rec).partition('\n')[-1].replace(buggy_newline,',\n')
 
 @auth.requires_login()
-def financials():
-    if not session.manager: t2.redirect('index')
-    rows=db().select(db.auth_user.ALL,orderby=db.auth_user.first_name|db.auth_user.last_name)
-    billed=sum([x.amount_billed for x in rows])
-    paid=sum([x.amount_paid for x in rows])
-    due=billed-paid
-    return dict(rows=rows,billed=billed,paid=paid,due=due)
+def asistentes():
+    form = SQLFORM.smartgrid(db.asistente, ui='jquery-ui')
+
+    return dict(form=form)
+
+#def financials():
+#    if not session.manager: t2.redirect('index')
+#    rows=db().select(db.auth_user.ALL,orderby=db.auth_user.first_name|db.auth_user.last_name)
+#    billed=sum([x.amount_billed for x in rows])
+#    paid=sum([x.amount_paid for x in rows])
+#    due=billed-paid
+#    return dict(rows=rows,billed=billed,paid=paid,due=due)
 
 @auth.requires_login()
 def financials_csv():
@@ -363,13 +368,12 @@ def badge():
 @auth.requires_login()
 def fa_csv():
     if not session.manager: t2.redirect('index')
-    person=db.auth_user
+    person=db.asistente
     fa=db.fa
     who=(person.id==fa.person)
-    rows=db(db.fa.id>0).select(person.first_name,person.last_name,person.id,person.address,person.city,
-                     person.state,person.zip_code,person.country, person.email, person.attendee_type,
-                     fa.registration_amount, fa.hotel_nights, fa.total_lodging_amount, fa.roommates,
-                     fa.transportation_details, fa.transportation_amount,
+    rows=db(db.fa.id>0).select(person.nombre,person.apellido,person.id,person.dni,person.provincia,
+                     person.email, fa.registration_amount, fa.hotel_nights, 
+                     fa.total_lodging_amount, fa.roommates, fa.transportation_details, fa.transportation_amount,
                      fa.total_amount_requested, fa.minimum_amount_requested,fa.rationale,
                      left=db.fa.on(who))  # the all important "join"
     response.headers['Content-Type']='text/csv'
