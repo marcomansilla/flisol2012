@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.KeyError'> 'ciudad'"
+p3
+sS'layer'
+p4
+S'/home/marco/flisol2012/web2py/applications/flisol2012/models/db_asistentes.py'
+p5
+sS'code'
+p6
+S"# -*- coding: utf-8 -*-\n\ndb.define_table('asistente',\n    Field('nombre','string',length=30),\n    Field('apellido','string',length=30),\n    Field('dni','integer',length=10),\n    Field('email','string',length=40),\n    Field('ocupacion','string',default='Estudiante'),\n    Field('provincia','string',default='Salta'),\n    Field('certificado','boolean',label='Solicita certificado?'),\n    Field('instalacion','boolean',label='Lleva un dispositivo para participar del install fest?'),\n    Field('dispositivo','string',default='PC'),\n    Field('distribucion','string',default='Debian'),\n    Field('comentario','text'),\n    Field('fecha','datetime',default=request.now,writable=False),\n    )\n\n################################\n#Validacion de datos personales#\n################################\ndb.asistente.nombre.comment=('(requerido)')\ndb.asistente.nombre.requires=IS_NOT_EMPTY()\n\ndb.asistente.apellido.comment=('(requerido)')\ndb.asistente.apellido.requires=IS_NOT_EMPTY()\n\ndb.asistente.dni.comment=('(requerido)')\ndb.asistente.dni.requires=[IS_NOT_EMPTY(), IS_NOT_IN_DB(db,'asistente.dni')]\n\ndb.asistente.ciudad.comment=XML(str(T('(see %s)',A('[2]',_href='#footnote2'))))\n\ndb.asistente.email.comment=('(requerido)')\ndb.asistente.email.requires=[IS_EMAIL(), IS_NOT_IN_DB(db,'asistente.email')]\n\ndb.asistente.ocupacion.requires=IS_IN_SET(['Estudiante','Tecnico','Sysadmin','Programador','Empresario','Independiente','Entusiasta','Amigo de Matt'])\n\ndb.asistente.provincia.requires=IS_IN_SET(['Buenos Aires','Catamarca','Chaco','Chubut','C\xc3\xb3rdoba','Corrientes','Entre R\xc3\xados','Formosa','Jujuy','La Pampa,','La Rioja','Mendoza','Misiones','Neuqu\xc3\xa9n','R\xc3\xado Negro','Salta','San Juan','San Luis','Santa Cruz','Santa Fe','Santiago del Estero','Tierra del Fuego, Ant\xc3\xa1rtida e Islas del Atl\xc3\xa1ntico Sur','Tucum\xc3\xa1n'])\n\n############################################\n#Informacion requerida para el install fest#\n############################################\ndb.asistente.instalacion.comment=()\n\ndb.asistente.dispositivo.requires=IS_IN_SET(['PC','Notebook','Netbook','Smartphone','Tablet','Otro...'])\ndb.asistente.distribucion.requires=IS_IN_SET(['Debian','Ubuntu','Linux Mint','Fedora','Tuquito','Dream Linux','Puppy'])\n"
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/marco/flisol2012/web2py/gluon/restricted.py", line 205, in restricted\n    exec ccode in environment\n  File "/home/marco/flisol2012/web2py/applications/flisol2012/models/db_asistentes.py", line 30, in <module>\n    db.asistente.ciudad.comment=XML(str(T(\'(see %s)\',A(\'[2]\',_href=\'#footnote2\'))))\n  File "/home/marco/flisol2012/web2py/gluon/dal.py", line 6774, in __getattr__\n    return self[key]\n  File "/home/marco/flisol2012/web2py/gluon/dal.py", line 6714, in __getitem__\n    return dict.__getitem__(self, str(key))\nKeyError: \'ciudad\'\n'
+p11
+s.
