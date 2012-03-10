@@ -21,3 +21,9 @@ Actualmente corriendo sobre web2py 1.99.7, descarga en http://www.web2py.com
         git clone https://github.com/316/flisol2012.git
 
 para dudas, consultas o sugerencias email marco@saltalug.org.ar
+
+IMPORTANTE
+==========
+
+Se debe tener el navegador con el paquete de idioma espaniol instalado para poder ver el contenido, aun esta pendiente la traduccion de contenido.
+
