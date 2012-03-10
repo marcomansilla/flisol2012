@@ -28,7 +28,7 @@ a:hover { background: none; }
 /* Menu */
 
 #menu { width: 95%; height: 2.3em; margin: 0 auto; -moz-border-radius:50px ; -webkit-border-radius:50px;color: #eee; background: #f93; padding: 0 0.5em;}
-#menu ul { margin: 0; margin-right: 30px; padding: 0; list-style: none; line-height: normal;-moz-border-radius:50px; -webkit-border-radius:50px }
+#menu ul { float: left; margin: 0; margin-right: 30px; padding: 0; list-style: none; line-height: normal;-moz-border-radius:50px; -webkit-border-radius:50px }
 #menu li { float: left;  margin: 0.25em 0.25em;-moz-border-radius:50px; -webkit-border-radius: 50px solid #e70; }
 #menu a { letter-spacing: 0.05em;-moz-border-radius:50-x; -webkit-border-radius: 50px solid #fb7; text-decoration: none; padding: 0.25em 0.75em; background: #f93; color: #430; }
 #menu a:hover, #menu .current_page_item a { color: #000; background: #f93;-moz-border-radius: 50px; -webkit-border-radius: 50px solid #fd9; }    

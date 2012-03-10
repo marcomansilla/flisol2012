@@ -1,11 +1,10 @@
 {{extend 'layout.html'}}
-<!---
+
 <script>
 $(document).ready(function(){
 $('TR TD:first').attr('width','150px');
 });
 </script>
---->
 
 <div class="frame">
 <h2>{{=T('Registration Form')}}</h2>
@@ -18,13 +17,13 @@ jQuery(document).ready(function(){
     jQuery('#asistente_comentario__row').hide();
     jQuery('#asistente_instalacion').change(function(){
     if(jQuery('#asistente_instalacion').attr('checked'))
-        jQuery('#asistente_dispositivo__row').show();
+        {jQuery('#asistente_dispositivo__row').show();
         jQuery('#asistente_distribucion__row').show();
-        jQuery('#asistente_comentario__row').show();
+        jQuery('#asistente_comentario__row').show()}
         else 
-             jQuery('#asistente_dispositivo__row').hide();
+             {jQuery('#asistente_dispositivo__row').hide();
              jQuery('#asistente_distribucion__row').hide();
-             jQuery('#asistente_comentario__row').hide();});
+             jQuery('#asistente_comentario__row').hide()}});
 });
 </script>
 <p><b>Notas:</b></p>
