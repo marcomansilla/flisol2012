@@ -1,7 +1,7 @@
 web2conf
 ========
 
-Basado en el branch de Marino Reingart, adaptado para el flisol Salta 2012
+Basado en el branch de [Marino Reingart](http://code.google.com/r/reingart-web2conf/), adaptado para el flisol Salta 2012
 
 Modificaciones
 ==============
