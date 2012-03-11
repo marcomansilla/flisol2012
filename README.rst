@@ -28,4 +28,4 @@ IMPORTANTE
 Se debe tener el navegador con el paquete de idioma espaniol instalado para poder ver el contenido, aun esta pendiente la traduccion de contenido.
 
 
-_brach: http://code.google.com/r/reingart-web2conf/
+_branch: http://code.google.com/r/reingart-web2conf/
